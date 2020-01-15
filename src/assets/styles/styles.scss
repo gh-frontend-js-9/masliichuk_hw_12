@@ -1,1 +1,7 @@
+@import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 @import "/components/_login.scss";
+@import "components/_messages.scss";
+
+header{
+  background-color: #2f3242;
+}
