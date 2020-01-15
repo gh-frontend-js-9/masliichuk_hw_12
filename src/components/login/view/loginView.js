@@ -12,7 +12,7 @@ export class LoginView {
     h1.innerText = 'Log in';
     let member = document.createElement("a");
     member.innerText = 'Not a member?';
-    member.setAttribute('href', 'http://google.com');
+    member.setAttribute('href', 'index.html?page=signup');
     member.className = 'member-link';
 
     this.loginForm = document.createElement('form');
@@ -38,7 +38,7 @@ export class LoginView {
 
     let forgotPass = document.createElement("a");
     forgotPass.innerText = 'Forgot password?';
-    forgotPass.setAttribute('href','http://google.com');
+    forgotPass.setAttribute('href','index.html?page=resetpass');
 
     this.loginForm.appendChild(this.login);
     this.loginForm.appendChild(br);
@@ -55,7 +55,8 @@ export class LoginView {
 
 async function login(email, pass) {
 
-  let response = await fetch('http:/localhost:3000/api/users/login',{
+  const url = 'http:/localhost:3000/api/users/login';
+  let response = await fetch(url,{
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -67,7 +68,7 @@ async function login(email, pass) {
 
   if (response.ok) {
     localStorage.setItem('token',response.headers.get('x-auth-token'));
-    alert('logged in');
+    location.href = 'messages.html?page=messages';
   } else {
     // alert("Ошибка HTTP: " + response.status);
     alert(responseText);

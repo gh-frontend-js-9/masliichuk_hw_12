@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hw11</title>
+    <link rel="stylesheet" href="css/style.bundle.css" >
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="#"><img src="images/logo.png"></a>
+                </div>
+
+                <div class="col-md-8 text-right">
+                    <button type="button" class="btn btn-primary btn-add">Add <i class="fa fa-plus" aria-hidden="true"></i></button>
+                    <div class="search">
+                        <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="notification">
+                        <a href="#"><i class="fa fa-bell" aria-hidden="true"></i></a>
+                    </div>
+
+                    <div class="profile">
+                        <img src="images/profile.png">
+                        <a href="#"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="row no-gutters">
+        <div class="col-md-1">
+            <div class="nav-bar">
+                <div class="container-fluid">
+                    <div class="nav-bar-item home-item text-center">
+                        <a href="#"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="nav-bar-item menu-item text-center">
+                        <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="nav-bar-item chart-item text-center">
+                        <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="nav-bar-item messages-item text-center">
+                        <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-11">
+            <div class="nav-bar-top">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="inbox-item active">
+                            <i class="fa fa-inbox" aria-hidden="true"></i>
+                            <a href="#">Inbox(2)</a>
+                        </div>
+
+                        <div class="inbox-item">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            <a href="#">Sent</a>
+                        </div>
+
+                        <div class="inbox-item">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            <a href="#">Trash</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 text-right">
+                        <p class="filter-text">Filter messages:</p>
+                        <div class="btn-group">
+                            <button type="button" class="drop-filter btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Date
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Date</a>
+                                <a class="dropdown-item" href="#">Date 2</a>
+                                <a class="dropdown-item" href="#">Date 3</a>
+                                <a class="dropdown-item" href="#">Date 4</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="full-message-list">
+                <div class="row">
+                    <div class="col-md-5" id="threads">
+
+                        <!--<div class="full-message-item">-->
+                            <!--<div class="header-profile flex-container">-->
+                                <!--<div class="header-profile-item">-->
+                                    <!--<div class="profile-icon">-->
+                                        <!--<img src="images/profile-icon.png">-->
+                                    <!--</div>-->
+
+                                    <!--<div class="user-name">-->
+                                        <!--Michelle Stewart-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="date-message">-->
+                                    <!--Today, 5:32 PM-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="user-message-item">-->
+                                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="full-message-item">-->
+                            <!--<div class="header-profile flex-container">-->
+                                <!--<div class="header-profile-item">-->
+                                    <!--<div class="profile-icon">-->
+                                        <!--<img src="images/profile-icon.png">-->
+                                    <!--</div>-->
+
+                                    <!--<div class="user-name">-->
+                                        <!--Jolene Slater-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="date-message">-->
+                                    <!--Today, 5:32 PM-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="user-message-item">-->
+                                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="full-message-item">-->
+                            <!--<div class="header-profile flex-container">-->
+                                <!--<div class="header-profile-item">-->
+                                    <!--<div class="profile-icon">-->
+                                        <!--<img src="images/profile-icon.png">-->
+                                    <!--</div>-->
+
+                                    <!--<div class="user-name">-->
+                                        <!--Lyall Roach-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="date-message">-->
+                                    <!--Today, 5:32 PM-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="user-message-item">-->
+                                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="full-message-item">-->
+                            <!--<div class="header-profile flex-container">-->
+                                <!--<div class="header-profile-item">-->
+                                    <!--<div class="profile-icon">-->
+                                        <!--<img src="images/profile-icon.png">-->
+                                    <!--</div>-->
+
+                                    <!--<div class="user-name">-->
+                                        <!--Dominic Lynton-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="date-message">-->
+                                    <!--Today, 5:32 PM-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="user-message-item">-->
+                                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <button type="button" class="btn btn-primary"> + New coversation</button>
+
+                    </div>
+
+                    <div class="col-md-7" >
+
+                        <div id="messages"></div>
+
+                        <!--<div class="message-item">-->
+                            <!--<div class="flex-container">-->
+                                <!--<div class="profile-icon">-->
+                                    <!--<img src="images/profile.png">-->
+                                <!--</div>-->
+
+                                <!--<div>-->
+                                    <!--<div class="message-sender">-->
+                                        <!--Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ulla pariatur.-->
+                                    <!--</div>-->
+
+                                    <!--<div class="date-message">-->
+                                        <!--<p>4 April 2016, 5:32 P</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="message-item right">-->
+                            <!--<div class="flex-container">-->
+                                <!--<div class="profile-icon">-->
+                                    <!--<img src="images/profile.png">-->
+                                <!--</div>-->
+
+                                <!--<div class="message-sender-item">-->
+                                    <!--<div class="message-sender">-->
+                                        <!--Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ulla pariatur.-->
+                                    <!--</div>-->
+
+                                    <!--<div class="date-message">-->
+                                        <!--<p>4 April 2016, 5:32 P</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="message-item">-->
+                            <!--<div class="flex-container">-->
+                                <!--<div class="profile-icon">-->
+                                    <!--<img src="images/profile.png">-->
+                                <!--</div>-->
+
+                                <!--<div>-->
+                                    <!--<div class="message-sender">-->
+                                        <!--Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ulla pariatur.-->
+                                    <!--</div>-->
+
+                                    <!--<div class="date-message">-->
+                                        <!--<p>4 April 2016, 5:32 P</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="message-item right">-->
+                            <!--<div class="flex-container">-->
+                                <!--<div class="profile-icon">-->
+                                    <!--<img src="images/profile.png">-->
+                                <!--</div>-->
+
+                                <!--<div class="message-sender-item">-->
+                                    <!--<div class="message-sender">-->
+                                        <!--Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ulla pariatur.-->
+                                    <!--</div>-->
+
+                                    <!--<div class="date-message">-->
+                                        <!--<p>4 April 2016, 5:32 P</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="message-item right">-->
+                            <!--<div class="flex-container">-->
+                                <!--<div class="profile-icon">-->
+                                    <!--<img src="images/profile.png">-->
+                                <!--</div>-->
+
+                                <!--<div class="message-sender-item">-->
+                                    <!--<div class="message-sender">-->
+                                        <!--Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ulla pariatur.-->
+                                    <!--</div>-->
+
+                                    <!--<div class="date-message">-->
+                                        <!--<p>4 April 2016, 5:32 P</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" placeholder="Write a message"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="bundle.js" ></script>
+</body>
+</html>

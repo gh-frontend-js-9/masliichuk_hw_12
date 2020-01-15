@@ -12,7 +12,7 @@ export class SignUpView {
     h1.innerText = 'Sign Up';
     let member = document.createElement("a");
     member.innerText = 'Existing member?';
-    member.setAttribute('href', 'http://google.com');
+    member.setAttribute('href', 'index.html');
     member.className = 'member-link';
 
     this.signupForm = document.createElement('form');
