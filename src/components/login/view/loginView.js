@@ -55,7 +55,7 @@ export class LoginView {
 
 async function login(email, pass) {
 
-  const url = 'http:/localhost:3000/api/users/login';
+  const url = 'https://geekhub-frontend-js-9.herokuapp.com/api/users/login';
   let response = await fetch(url,{
     method: 'POST',
     headers: {

@@ -57,7 +57,7 @@ export class ResetPassView {
 
 
 async function resetPass(email, pass, confPass) {
-  let response = await fetch('http:/localhost:3000/api/users/reset_password',{
+  let response = await fetch('https://geekhub-frontend-js-9.herokuapp.com/api/users/reset_password',{
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',

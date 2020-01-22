@@ -8,7 +8,7 @@ export class MessagesView {
 
   generateThreads(){
 
-    fetch('http:/localhost:3000/api/threads', {
+    fetch('https://geekhub-frontend-js-9.herokuapp.com/api/threads', {
       method: 'GET',
       headers: {
         'x-access-token': this.token,
@@ -34,7 +34,7 @@ export class MessagesView {
 
   generateMessages(threadId) {
 
-    fetch('http:/localhost:3000/api/threads/messages/'+threadId, {
+    fetch('https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages/'+threadId, {
       method: 'GET',
       headers: {
         'x-access-token': this.token,
