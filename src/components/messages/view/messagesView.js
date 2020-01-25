@@ -1,3 +1,5 @@
+import {ApiService} from "../../../services/apiService";
+
 export class MessagesView {
 
   constructor() {
@@ -8,59 +10,42 @@ export class MessagesView {
 
   generateThreads(){
 
-    fetch('https://geekhub-frontend-js-9.herokuapp.com/api/threads', {
-      method: 'GET',
-      headers: {
-        'x-access-token': this.token,
-      }
-    })
+    ApiService.getThreads()
         .then(response => {
-      return response.json();
-    }).then(threads => {
-      console.log(threads);
-
-      threads.forEach(thread => {
-        var threadBlock = this.createThread(thread);
-        threadBlock.addEventListener('click', () => {
-          document.getElementById('messages').innerHTML = '';
-          const messagesElements = this.generateMessages(thread._id);
+          return response.json();
+        }).then(threads => {
+          console.log(threads);
+          threads.forEach(thread => {
+          var threadBlock = this.createThread(thread);
+          threadBlock.addEventListener('click', () => {
+            document.getElementById('messages').innerHTML = '';
+            const messagesElements = this.generateMessages(thread._id);
+          });
+          document.getElementById('threads').append(threadBlock);
         });
-        document.getElementById('threads').append(threadBlock);
-      });
-
-    })
-
+      })
   }
 
   generateMessages(threadId) {
 
-    fetch('https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages/'+threadId, {
-      method: 'GET',
-      headers: {
-        'x-access-token': this.token,
-      }
-    })
+    ApiService.getMessages(threadId)
         .then(response => {
           return response.json();
-        }).then(thread => {
-
-          console.log(thread);
-
-      thread.messages.forEach(message => {
-            var messageBlock = this.createMessage(message, thread);
+        }).then(messages => {
+          console.log(messages);
+          messages.forEach(message => {
+            var messageBlock = this.createMessage(message);
             document.getElementById('messages').append(messageBlock);
           });
-
     })
-
   }
 
-  createMessage(message, thread){
+  createMessage(message){
     var messageItem = document.createElement('div');
     messageItem.className = 'message-item';
 
-    const messageUser = thread.users.filter(user => user._id === message.user)[0];
-    if (messageUser.me) {
+    const myUserId = localStorage.getItem('userId');
+    if (message.user._id === myUserId) {
       messageItem.className = 'message-item right';
     }
 
@@ -115,7 +100,10 @@ export class MessagesView {
 
     var userName = document.createElement('div');
     userName.className = 'user-name';
-    const user = thread.users.filter(user => user.me === false)[0];
+
+    const myUser = thread.users[0];
+    localStorage.setItem('userId', myUser._id);
+    const user = thread.users[1];
     userName.innerText = user.name;
 
     var dateMessage = document.createElement('div');
@@ -126,9 +114,9 @@ export class MessagesView {
     userMessageItem.className = 'user-message-item';
 
     var textUserMessageItem = document.createElement('p');
-    var lastMessage = 'No message yet';
-    if ( thread.last_message.body ) {
-      lastMessage = thread.last_message.body
+    var lastMessage = 'No messages yet';
+    if ( thread.message ) {
+      lastMessage = thread.message.body
     }
     textUserMessageItem.innerText = lastMessage;
 

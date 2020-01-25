@@ -1,3 +1,5 @@
+import {ApiService} from "../../../services/apiService";
+
 export class SignUpView {
 
   constructor() {
@@ -41,6 +43,21 @@ export class SignUpView {
     this.btnSubmit.addEventListener( "click" , (e) => {
       e.preventDefault();
       signUp(this.login.value, this.password.value, this.name.value);
+
+      ApiService.signUp(this.login.value, this.password.value, this.name.value)
+          .then(response => {
+            console.log(response);
+            if (response.ok) {
+              localStorage.setItem('token',response.headers.get('x-auth-token'));
+              location.href = 'messages.html?page=messages';
+            } else {
+              alert(responseText);
+            }
+          })
+          .catch(error => {
+            console.error(error);
+          });
+
     });
 
     this.signupForm.appendChild(this.name);
@@ -54,26 +71,5 @@ export class SignUpView {
     this.signupBlock.appendChild(h1);
     this.signupBlock.appendChild(member);
     this.signupBlock.appendChild(this.signupForm);
-  }
-}
-
-
-async function signUp(email, pass, name) {
-  let response = await fetch('https://geekhub-frontend-js-9.herokuapp.com/api/users',{
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: `email=${email}&password=${pass}&name=${name}`
-  });
-
-  let responseText = await response.text();
-
-  if (response.ok) {
-    localStorage.setItem('token',response.headers.get('x-auth-token'));
-    alert('signed up');
-  } else {
-    // alert("Ошибка HTTP: " + response.status);
-    alert(responseText);
   }
 }

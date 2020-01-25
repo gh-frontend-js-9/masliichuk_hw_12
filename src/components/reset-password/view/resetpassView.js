@@ -1,3 +1,5 @@
+import {ApiService} from "../../../services/apiService";
+
 export class ResetPassView {
 
   constructor() {
@@ -37,7 +39,20 @@ export class ResetPassView {
     this.btnSubmit.className = 'btnSubmit';
     this.btnSubmit.addEventListener( "click" , (e) => {
       e.preventDefault();
-      resetPass(this.login.value, this.password.value, this.resetPass.value);
+
+      ApiService.resetPass(this.login.value, this.password.value, this.resetPass.value)
+          .then(response => {
+            console.log(response);
+            if (response.ok) {
+              localStorage.setItem('token',response.headers.get('x-auth-token'));
+              location.href = 'messages.html?page=messages';
+            } else {
+              return response.text();
+            }
+          })
+          .then(responseBody => {
+            alert(responseBody);
+          })
     });
 
 
@@ -52,26 +67,5 @@ export class ResetPassView {
     this.resetPassBlock.appendChild(h1);
     this.resetPassBlock.appendChild(h4);
     this.resetPassBlock.appendChild(this.resetPassForm);
-  }
-}
-
-
-async function resetPass(email, pass, confPass) {
-  let response = await fetch('https://geekhub-frontend-js-9.herokuapp.com/api/users/reset_password',{
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: `email=${email}&password=${pass}&confirmationPassword=${confPass}`
-  });
-
-  let responseText = await response.text();
-
-  if (response.ok) {
-    localStorage.setItem('token',response.headers.get('x-auth-token'));
-    alert('Your password reseted');
-  } else {
-    // alert("Ошибка HTTP: " + response.status);
-    alert(responseText);
   }
 }
