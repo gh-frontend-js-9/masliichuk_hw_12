@@ -1,3 +1,5 @@
+import {ApiService} from "../../../services/apiService";
+
 export class LoginView {
 
   constructor() {
@@ -5,7 +7,6 @@ export class LoginView {
   }
 
    generateTemplate(){
-
     this.loginBlock = document.createElement('div');
 
     let h1 = document.createElement("h1");
@@ -33,7 +34,21 @@ export class LoginView {
     this.btnSubmit.className = 'btnSubmit';
     this.btnSubmit.addEventListener( "click" , (e) => {
       e.preventDefault();
-      login(this.login.value, this.password.value);
+
+      ApiService.login(this.login.value, this.password.value)
+          .then(response => {
+            console.log(response);
+            if (response.ok) {
+              localStorage.setItem('token',response.headers.get('x-auth-token'));
+              location.href = 'messages.html?page=messages';
+            } else {
+              return response.json();
+            }
+          })
+          .then(data => {
+            alert(data.message);
+          })
+
     });
 
     let forgotPass = document.createElement("a");
@@ -50,27 +65,5 @@ export class LoginView {
     this.loginBlock.appendChild(member);
     this.loginBlock.appendChild(this.loginForm);
     this.loginBlock.appendChild(forgotPass);
-  }
-}
-
-async function login(email, pass) {
-
-  const url = 'https://geekhub-frontend-js-9.herokuapp.com/api/users/login';
-  let response = await fetch(url,{
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: `email=${email}&password=${pass}`
-  });
-
-  let responseText = await response.text();
-
-  if (response.ok) {
-    localStorage.setItem('token',response.headers.get('x-auth-token'));
-    location.href = 'messages.html?page=messages';
-  } else {
-    // alert("Ошибка HTTP: " + response.status);
-    alert(responseText);
   }
 }
